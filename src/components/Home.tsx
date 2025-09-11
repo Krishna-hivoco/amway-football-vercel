@@ -71,27 +71,29 @@ function Home() {
         </div>
 
         {/* First Phase Content */}
-       {!showSecondContent && <div
-          className={`flex flex-col gap-6  flex-1 justify-end ${
-            showSecondPhase ? "phase-one-hide" : "bottom-slide-up"
-          }`}
-        >
+        {!showSecondContent && (
           <div
-            style={{ backgroundColor: "rgba(44, 44, 44, 0.3)" }} // Uncomment this
-            className="font-bold text-xl p-2 rounded-tl-[9px] rounded-br-[9px] border border-white backdrop-blur-sm shadow-sm quantico-bold text-center"
+            className={`flex flex-col gap-6  flex-1 justify-end ${
+              showSecondPhase ? "phase-one-hide" : "bottom-slide-up"
+            }`}
           >
-            Step onto the field <br /> Your choices decide the match
+            <div
+              style={{ backgroundColor: "rgba(44, 44, 44, 0.3)" }} // Uncomment this
+              className="font-bold text-xl p-2 rounded-tl-[9px] rounded-br-[9px] border border-white backdrop-blur-sm shadow-sm quantico-bold text-center"
+            >
+              Step onto the field <br /> Your choices decide the match
+            </div>
+            <Button onClick={() => sec()} title={"START"} />
           </div>
-          <Button onClick={() => sec()} title={"START"} />
-        </div>}
+        )}
 
         {/* Second Phase Content */}
         {showSecondContent && (
           <div className="flex flex-col gap-6 phase-two-content  flex-1 justify-end">
             <div>
               <p className="text-center text-lg quantico-regular text-white leading-5">
-                You're the Manager. Watch, choose, & score goals with your bone
-                health team
+                You&apos;re the Manager. Watch, choose, & score goals with your
+                bone health team
               </p>
             </div>
             <div

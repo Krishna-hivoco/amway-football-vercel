@@ -55,8 +55,8 @@ import React, { useEffect, useState } from "react";
 function Result() {
   const router = useRouter();
   const score = Number(router.query.score as string);
-  const total = router.query.total as string;
-  const percentage = router.query.percentage as string;
+//   const total = router.query.total as string;
+//   const percentage = router.query.percentage as string;
 
   const [isLoaded, setIsLoaded] = useState(false);
 
