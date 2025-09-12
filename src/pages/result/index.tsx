@@ -71,7 +71,7 @@ function Result() {
 
   return (
     <div
-      className={`bg-[url("/main-bg.png")] bg-no-repeat bg-cover bg-center min-w-svw md:w-[375px] h-svh mx-auto flex flex-col p-7 transition-opacity duration-1000 ${
+      className={`bg-[url("/main-bg.png")] bg-no-repeat bg-cover bg-center w-svw md:w-[375px] h-svh mx-auto flex flex-col p-7 transition-opacity duration-1000 ${
         isLoaded ? "opacity-100" : "opacity-0"
       }`}
     >

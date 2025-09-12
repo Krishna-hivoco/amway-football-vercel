@@ -710,6 +710,19 @@ const QuizCard: React.FC<QuizCardProps> = ({
     }
   };
 
+  function convertCount(count:number) {
+    // if (count < 1 || count > 10) {
+    //   throw new Error("Count must be between 1 and 9");
+    // }
+
+    if (count === 1 || count===0) {
+      return 1.0;
+    } else {
+      return (10 - count) / 10;
+    }
+  }
+
+
   const color: string[] = [
     "#38539A",
     "#A65523B2",
@@ -739,7 +752,7 @@ const QuizCard: React.FC<QuizCardProps> = ({
     // Add fade-in and slide animation for cards
     const baseTransform = `translate(-50%, -50%) translateY(${
       cardIndex * -16
-    }px) scale(${1 - cardIndex * 0.035})`;
+    }px) scale(${1 - cardIndex * 0.04})`;
 
     if (!isLoaded && isActive) {
       return {
@@ -1007,6 +1020,7 @@ const QuizCard: React.FC<QuizCardProps> = ({
         left: "50%",
         boxShadow: "0 4px 12px rgba(100, 100, 100, 0.4)",
         ...getAnimationStyle(),
+        opacity: convertCount(cardIndex+1),
       }}
     >
       {/* Question */}
@@ -1015,8 +1029,8 @@ const QuizCard: React.FC<QuizCardProps> = ({
           backgroundColor: color[cardIndex + currentQuestionIndex],
           width: "600px",
           border: `1px solid ${color[cardIndex + currentQuestionIndex]}`,
-
-          filter: ` blur(${cardIndex}px)`,
+          // opacity: convertCount(currentQuestionIndex + 1),
+          // filter: ` blur(${cardIndex}px)`,
         }}
         className="h-2  absolute top-0 left-0"
       ></div>
