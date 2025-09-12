@@ -95,7 +95,7 @@ function Result() {
             >
               <Image
                 className="object-contain"
-                src={score > 5 ? "/trophy1.png" : "/over.png"}
+                src={score > 5 ? "/Trophy.png" : "/over.png"}
                 alt="Result"
                 width={score > 5 ? 171 : 184}
                 height={score > 5 ? 221 : 152}
