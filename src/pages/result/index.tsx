@@ -79,7 +79,7 @@ function Result() {
         <div className="flex flex-1 flex-col w-full">
           {/* Logo - slides from 100px to actual position */}
           <div
-            className={`mx-auto w-fit pt-20 transform transition-all duration-1000 ease-out ${
+            className={`mx-auto w-fit pt-10 transform transition-all duration-1000 ease-out ${
               isLoaded ? "translate-y-0" : "-translate-y-[100px]"
             }`}
           >
@@ -127,7 +127,7 @@ function Result() {
             isLoaded ? "translate-y-0" : "translate-y-[100px]"
           }`}
         >
-          {score < 5 && (
+          {score <= 5 && (
             <Button onClick={() => router.push("/")} title={"Play Again"} />
           )}
         </div>
