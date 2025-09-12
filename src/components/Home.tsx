@@ -27,7 +27,7 @@ function Home() {
   const steps = [
     {
       id: 1,
-      title: "Watch a quick clip or Read the question.",
+      title: " Read the question.",
       // description: "Start by reviewing the content",
     },
     {
@@ -92,32 +92,31 @@ function Home() {
 
         {/* Second Phase Content */}
         {showSecondContent && (
-          <div className="flex flex-col flex-1 min-h-0  justify-end phase-two-content">
-            <div className=" overflow-y-auto scrollbar-hide ">
-              <div className="flex flex-col gap-6  pb-6">
-                <div>
+          <div className="flex flex-col flex-1 min-h-0  justify-end    phase-two-content">
+            <div className="overflow-y-auto scrollbar-hide ">
+              <div className=" flex-col gap-6  pb-20 ">
+                <div className="pb-20">
                   <p className="text-center text-lg quantico-regular text-white leading-5">
-                    You&apos;re the Manager. Watch, choose, & score goals with
+                    You&apos;re the Manager. Read, choose, & score goals with
                     your bone health team
                   </p>
                 </div>
                 <div
                   style={{ backgroundColor: "rgba(44, 44, 44, 0.4)" }}
-                  className="font-bold text-xl p-2 rounded-[9px] text-center border border-white backdrop-blur-sm shadow-sm"
+                  className="font-bold text-xl p-2 rounded-[9px] text-center   border-white backdrop-blur-sm shadow-sm"
                 >
                   How to Steps:
                 </div>
 
-                
                 <div
                   style={{ backgroundColor: "rgba(44, 44, 44, 0.4)" }}
-                  className="font-bold text-xl p-2 rounded-[9px] text-center border border-white backdrop-blur-sm shadow-sm"
+                  className="font-bold text-xl p-2 rounded-[9px]  text-center mt-2 border border-white backdrop-blur-sm shadow-sm"
                 >
                   <div className="relative">
                     {steps.map((step, index) => (
                       <div
                         key={step.id}
-                        className="flex items-start mb-8 last:mb-0"
+                        className="flex items-center mb-8 last:mb-0  "
                       >
                         <div className="relative flex-shrink-0">
                           <div

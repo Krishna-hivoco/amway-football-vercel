@@ -900,6 +900,103 @@ const QuizCard: React.FC<QuizCardProps> = ({
     //   </div>
     // </div>
 
+    // <div
+    //   className={`absolute bg-[#F1F2FF] h-[360px] rounded-b-[18px] p-6 w-full max-w-md ${className} ${
+    //     isActive && !isAnswered ? "" : "pointer-events-none"
+    //   }`}
+    //   style={{
+    //     zIndex,
+    //     top: "50%",
+    //     left: "50%",
+    //     boxShadow: "0 4px 12px rgba(100, 100, 100, 0.4)",
+    //     ...getAnimationStyle(),
+    //   }}
+    // >
+    //   {/* Question */}
+    //   <div
+    //     style={{
+    //       backgroundColor: color[cardIndex + currentQuestionIndex],
+    //       width: "600px",
+    //       border: `1px solid ${color[cardIndex + currentQuestionIndex]}`,
+
+    //       filter: ` blur(${cardIndex}px)`,
+    //     }}
+    //     className="h-2  absolute top-0 left-0"
+    //   ></div>
+
+    //   <div className="mb-6">
+    //     <h2 className="font-normal text-sm text-gray-800 leading-relaxed">
+    //       {questionData.question}
+    //     </h2>
+    //   </div>
+
+    //   {/* Options */}
+    //   <div className="space-y-3">
+    //     {questionData.options.map((option) => {
+    //       const isSelected = selectedOption === option.id;
+    //       const isCorrectOption = option.isCorrect;
+    //       const isWrongSelection = isSelected && !isCorrectOption && isAnswered;
+    //       const isCorrectSelection =
+    //         isSelected && isCorrectOption && isAnswered;
+    //       const shouldShowAsCorrect = isAnswered && isCorrectOption; // Show correct answer even if not selected
+    //       const shouldShowIcon =
+    //         (isAnswered && isSelected) || (isAnswered && isCorrectOption);
+
+    //       return (
+    //         <button
+    //           key={option.id}
+    //           onClick={() => handleOptionClick(option.id, option.isCorrect)}
+    //           disabled={isAnswered}
+    //           className={`w-full p-2 text-left border-2 rounded-lg transition-all duration-200 flex items-center justify-between ${
+    //             shouldShowAsCorrect
+    //               ? "border-green-500 bg-green-100 text-green-800"
+    //               : isWrongSelection
+    //               ? "border-red-500 bg-red-100 text-red-800"
+    //               : isSelected && !isAnswered
+    //               ? "border-blue-500 bg-blue-50 text-blue-700"
+    //               : "border-gray-200 bg-white text-gray-700"
+    //           } ${
+    //             !isAnswered
+    //               ? "hover:border-blue-300 hover:bg-blue-50 cursor-pointer"
+    //               : "cursor-not-allowed"
+    //           }`}
+    //         >
+    //           <span className="block text-sm font-medium">{option.text}</span>
+    //           {shouldShowIcon && (
+    //             <div className="flex-shrink-0 ml-2">
+    //               {isCorrectOption ? (
+    //                 <svg
+    //                   className="w-5 h-5 text-green-600"
+    //                   fill="currentColor"
+    //                   viewBox="0 0 20 20"
+    //                 >
+    //                   <path
+    //                     fillRule="evenodd"
+    //                     d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+    //                     clipRule="evenodd"
+    //                   />
+    //                 </svg>
+    //               ) : (
+    //                 <svg
+    //                   className="w-5 h-5 text-red-600"
+    //                   fill="currentColor"
+    //                   viewBox="0 0 20 20"
+    //                 >
+    //                   <path
+    //                     fillRule="evenodd"
+    //                     d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+    //                     clipRule="evenodd"
+    //                   />
+    //                 </svg>
+    //               )}
+    //             </div>
+    //           )}
+    //         </button>
+    //       );
+    //     })}
+    //   </div>
+    // </div>
+
     <div
       className={`absolute bg-[#F1F2FF] h-[360px] rounded-b-[18px] p-6 w-full max-w-md ${className} ${
         isActive && !isAnswered ? "" : "pointer-events-none"
@@ -931,8 +1028,8 @@ const QuizCard: React.FC<QuizCardProps> = ({
       </div>
 
       {/* Options */}
-      <div className="space-y-3">
-        {questionData.options.map((option) => {
+      <div className="space-y-2">
+        {questionData.options.map((option, index) => {
           const isSelected = selectedOption === option.id;
           const isCorrectOption = option.isCorrect;
           const isWrongSelection = isSelected && !isCorrectOption && isAnswered;
@@ -941,27 +1038,31 @@ const QuizCard: React.FC<QuizCardProps> = ({
           const shouldShowAsCorrect = isAnswered && isCorrectOption; // Show correct answer even if not selected
           const shouldShowIcon =
             (isAnswered && isSelected) || (isAnswered && isCorrectOption);
+          const optionLabel = String.fromCharCode(65 + index); // A, B, C, D...
 
           return (
             <button
               key={option.id}
               onClick={() => handleOptionClick(option.id, option.isCorrect)}
               disabled={isAnswered}
-              className={`w-full p-2 text-left border-2 rounded-lg transition-all duration-200 flex items-center justify-between ${
+              className={`w-full p-2 text-left border-[0.6px]  rounded-lg transition-all duration-200 flex items-center justify-between ${
                 shouldShowAsCorrect
                   ? "border-green-500 bg-green-100 text-green-800"
                   : isWrongSelection
                   ? "border-red-500 bg-red-100 text-red-800"
                   : isSelected && !isAnswered
                   ? "border-blue-500 bg-blue-50 text-blue-700"
-                  : "border-gray-200 bg-white text-gray-700"
+                  : "border-[#000000] bg-white text-gray-700"
               } ${
                 !isAnswered
                   ? "hover:border-blue-300 hover:bg-blue-50 cursor-pointer"
                   : "cursor-not-allowed"
               }`}
             >
-              <span className="block text-sm font-medium">{option.text}</span>
+              <span className="block text-sm font-medium">
+                <span className="font-bold mr-2">{optionLabel}.</span>
+                {option.text}
+              </span>
               {shouldShowIcon && (
                 <div className="flex-shrink-0 ml-2">
                   {isCorrectOption ? (
