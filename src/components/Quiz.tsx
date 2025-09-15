@@ -725,15 +725,15 @@ const QuizCard: React.FC<QuizCardProps> = ({
 
   const color: string[] = [
     "#38539A",
-    "#A65523B2",
-    "#62625A80",
-    "#396E7580",
-    "#54622380",
-    "#62625A40",
-    "#C087644D",
-    "#38539A66",
-    "#396E7533",
-    "#A65523B2",
+    "#A65523",
+    "#62625A",
+    "#396E75",
+    "#546223",
+    "#38539A",
+    "#A65523",
+    "#62625A",
+    "#396E75",
+    "#546223",
   ];
 
   // Animation styles
@@ -770,9 +770,8 @@ const QuizCard: React.FC<QuizCardProps> = ({
   };
 
   return (
-
     <div
-      className={`absolute bg-[#F1F2FF] h-[360px] rounded-b-[18px]  p-6 w-full max-w-md ${className} ${
+      className={`absolute bg-[#FBFCFF] h-[360px] rounded-b-[18px]  p-6 w-full max-w-md ${className} ${
         isActive && !isAnswered ? "" : "pointer-events-none"
       }`}
       style={{
@@ -781,7 +780,7 @@ const QuizCard: React.FC<QuizCardProps> = ({
         left: "50%",
         boxShadow: "0 4px 12px rgba(100, 100, 100, 0.4)",
         ...getAnimationStyle(),
-        opacity: convertCount(cardIndex+1),
+        opacity: convertCount(cardIndex + 1),
       }}
     >
       {/* Question */}
@@ -789,7 +788,7 @@ const QuizCard: React.FC<QuizCardProps> = ({
         style={{
           backgroundColor: color[cardIndex + currentQuestionIndex],
           width: "600px",
-          border: `1px solid ${color[cardIndex + currentQuestionIndex]}`,
+          // border: `1px solid ${color[cardIndex + currentQuestionIndex]}`,
           // opacity: convertCount(currentQuestionIndex + 1),
           // filter: ` blur(${cardIndex}px)`,
         }}
