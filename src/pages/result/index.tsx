@@ -83,7 +83,7 @@ function Result() {
               isLoaded ? "translate-y-0" : "-translate-y-[100px]"
             }`}
           >
-            <Image src={"/logo.png"} alt="Logo" width={234} height={80} />
+            <Image src={"/logo.png"} alt="Logo" width={224} height={80} />
           </div>
 
           <div className="flex justify-center items-center flex-col gap-10 w-full flex-1">
@@ -94,11 +94,12 @@ function Result() {
               }`}
             >
               <Image
-                className="object-contain"
+                className=""
                 src={score > 5 ? "/Trophy.png" : "/over.png"}
                 alt="Result"
-                width={score > 5 ? 171 : 184}
+                width={score > 5 ? 200 : 184}
                 height={score > 5 ? 221 : 152}
+                
               />
             </div>
 
