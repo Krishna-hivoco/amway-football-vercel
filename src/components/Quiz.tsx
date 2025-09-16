@@ -799,7 +799,9 @@ const QuizCard: React.FC<QuizCardProps> = ({
       ></div>
 
       <div className="mb-6">
-        <h2 className="font-normal text-sm text-gray-800 leading-relaxed">
+        <h2
+          className={`font-normal text-sm ${cardIndex==0?"text-gray-800":"text-white"} leading-relaxed`}
+        >
           {questionData.question}
         </h2>
       </div>
