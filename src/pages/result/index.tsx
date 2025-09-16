@@ -95,10 +95,10 @@ function Result() {
             >
               <Image
                 className=""
-                src={score > 5 ? "/Trophy.png" : "/over.png"}
+                src={score > 8 ? "/Trophy.png" : "/over.png"}
                 alt="Result"
-                width={score > 5 ? 200 : 184}
-                height={score > 5 ? 221 : 152}
+                width={score > 8 ? 200 : 184}
+                height={score > 8 ? 221 : 152}
                 
               />
             </div>
@@ -111,10 +111,10 @@ function Result() {
             >
               <h2 className="text-6xl quantico-bold">{score}/10</h2>
               <h4 className="text-2xl quantico-bold mt-2">
-                {score > 5 ? "CONGRATULATIONS!" : "Not quite there yet!"}
+                {score > 8 ? "CONGRATULATIONS!" : "Not quite there yet!"}
               </h4>
               <p className="quantico-regular text-base mt-1">
-                {score > 5
+                {score > 8
                   ? "You passed the quiz — great job."
                   : "Try again to pass the quiz"}
               </p>
@@ -128,7 +128,7 @@ function Result() {
             isLoaded ? "translate-y-0" : "translate-y-[100px]"
           }`}
         >
-          {score <= 5 && (
+          {score <= 8 && (
             <Button onClick={() => router.push("/")} title={"Play Again"} />
           )}
         </div>
