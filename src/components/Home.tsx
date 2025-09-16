@@ -312,11 +312,14 @@
 import Button from "@/elements/Button";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 function Home() {
   const router = useRouter();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
+  const videoRef = useRef<any>(null);
 
   useEffect(() => {
     // Trigger animations after component mounts
@@ -327,9 +330,41 @@ function Home() {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    if (showVideo && videoRef.current) {
+      // Start playing video when it's shown
+      videoRef.current.play();
+    }
+  }, [showVideo]);
+
+  const handleStartClick = () => {
+    setShowVideo(true);
+  };
+
+  const handleSkip = () => {
+    router.push("/quiz");
+  };
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
+
+  const handleVideoEnd = () => {
+    // Automatically go to quiz page when video ends
+    router.push("/quiz");
+  };
+
   return (
-    <div className='bg-[url("/main-bg.png")] bg-no-repeat bg-cover bg-center w-full h-full flex flex-col p-7 overflow-hidden'>
-      <div className="flex flex-col h-full">
+    <div className='bg-[url("/main-bg.png")] bg-no-repeat bg-cover bg-center w-full h-full flex flex-col p-7 overflow-hidden relative'>
+      {/* Main content - hidden when video is playing */}
+      <div
+        className={`flex flex-col h-full transition-opacity duration-500 ${
+          showVideo ? "opacity-0 pointer-events-none" : "opacity-100"
+        }`}
+      >
         {/* Logo section - slides down from top */}
         <div className="flex w-full h-fit flex-shrink-0">
           <div
@@ -357,12 +392,81 @@ function Home() {
           >
             Step onto the field <br /> Your choices decide the match
           </div>
-          <Button onClick={() => router.push("/quiz")} title={"START"} />
+          <Button onClick={handleStartClick} title={"START"} />
         </div>
       </div>
+
+      {/* Video overlay - shows when START is clicked */}
+      {showVideo && (
+        <div className="absolute inset-0 bg-black z-50 flex items-center justify-center">
+          <video
+            ref={videoRef}
+            src="/video.mp4"
+            className="w-full h-full object-cover"
+            muted={isMuted}
+            onEnded={handleVideoEnd}
+            playsInline
+            autoPlay
+          />
+
+          {/* Mute/Unmute button - top left */}
+          <button
+            onClick={toggleMute}
+            className="absolute top-6 right-6 z-60 bg-black bg-opacity-50 hover:bg-opacity-70 rounded-full p-3 transition-all duration-200"
+          >
+            {!isMuted ? (
+              // Muted icon
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="size-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z"
+                />
+              </svg>
+            ) : (
+              // Unmuted icon
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                className="size-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M17.25 9.75 19.5 12m0 0 2.25 2.25M19.5 12l2.25-2.25M19.5 12l-2.25 2.25m-10.5-6 4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z"
+                />
+              </svg>
+            )}
+          </button>
+
+          {/* Skip button - bottom center */}
+          {/* <button
+            onClick={handleSkip}
+            className="absolute  z-60 bg-white hover:bg-gray-100  font-bold py-3 px-8 rounded-full transition-all duration-200  border-white backdrop-blur-sm shadow-sm text-white w-full border"
+          >
+            SKIP
+          </button> */}
+
+          <button
+            onClick={handleSkip}
+            className={`absolute bottom-8 left-5 right-5 z-60 border-white backdrop-blur-sm shadow-sm text-white  border font-bold py-3 rounded-full transition-all duration-200 hover:scale-105 `}
+          >
+            SKIP
+          </button>
+        </div>
+      )}
     </div>
   );
 }
 
 export default Home;
-
