@@ -95,7 +95,7 @@ function Result() {
             >
               <Image
                 className=""
-                src={score > 7 ? "/Trophy.png" : "/over.png"}
+                src={score > 7  ? "/Trophy.png" : "/over.png"}
                 alt="Result"
                 width={score > 7 ? 200 : 184}
                 height={score > 7 ? 221 : 152}

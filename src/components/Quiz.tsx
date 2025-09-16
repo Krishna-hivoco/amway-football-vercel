@@ -751,7 +751,7 @@ const QuizCard: React.FC<QuizCardProps> = ({
 
     // Add fade-in and slide animation for cards
     const baseTransform = `translate(-50%, -50%) translateY(${
-      cardIndex * -16
+      cardIndex * -25
     }px) scale(${1 - cardIndex * 0.04})`;
 
     if (!isLoaded && isActive) {
@@ -759,6 +759,7 @@ const QuizCard: React.FC<QuizCardProps> = ({
         transform: `${baseTransform} translateY(50px)`,
         opacity: 0,
         transition: "all 0.6s ease-out",
+       
       };
     }
 
@@ -766,12 +767,13 @@ const QuizCard: React.FC<QuizCardProps> = ({
       transform: baseTransform,
       opacity: 1,
       transition: "all 0.1s ease-out",
+     
     };
   };
 
   return (
     <div
-      className={`absolute bg-[#FBFCFF] h-[360px] rounded-b-[18px]  p-6 w-full max-w-md ${className} ${
+      className={`absolute bg-[#FBFCFF] h-[360px]  rounded-b-[18px]  p-6 w-full max-w-md ${className} ${
         isActive && !isAnswered ? "" : "pointer-events-none"
       }`}
       style={{
@@ -781,6 +783,7 @@ const QuizCard: React.FC<QuizCardProps> = ({
         boxShadow: "0 4px 12px rgba(100, 100, 100, 0.4)",
         ...getAnimationStyle(),
         opacity: convertCount(cardIndex + 1),
+        // filter: ` blur(${cardIndex}px)`
       }}
     >
       {/* Question */}
@@ -789,7 +792,7 @@ const QuizCard: React.FC<QuizCardProps> = ({
           backgroundColor: color[cardIndex + currentQuestionIndex],
           width: "600px",
           // border: `1px solid ${color[cardIndex + currentQuestionIndex]}`,
-          // opacity: convertCount(currentQuestionIndex + 1),
+          // opacity: convertCount(cardIndex),
           // filter: ` blur(${cardIndex}px)`,
         }}
         className="h-2  absolute top-0 left-0"
@@ -1135,7 +1138,7 @@ function Quiz() {
             </div>
           </div>
 
-          <div className="flex-1 relative mt-12 ">
+          <div className="flex-1 relative mt-28 ">
             {/* Stack all cards on top of each other */}
             {sampleQuizData.map((question, index) => {
               // Only render cards that haven't been completed yet
