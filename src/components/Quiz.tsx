@@ -1202,7 +1202,7 @@ function Quiz() {
                   answeredQuestions.has(
                     sampleQuizData[currentQuestionIndex].id
                   ) && !animatingCards.has(currentQuestionIndex)
-                    ? "bg-white text-black hover:bg-gray-100"
+                    ? "bg-white text-black "
                     : "border-white backdrop-blur-sm shadow-sm text-white cursor-not-allowed"
                 }`}
               >
