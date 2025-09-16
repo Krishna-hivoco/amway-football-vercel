@@ -105,7 +105,7 @@ function Result() {
 
             {/* Result Card - slides up from bottom */}
             <div
-              className={`rounded-2xl p-7 w-full border border-white backdrop-blur-sm shadow-sm text-center transform transition-all duration-1000 ease-out delay-500 ${
+              className={`rounded-2xl p-7 w-full border border-white text-white backdrop-blur-sm shadow-sm text-center transform transition-all duration-1000 ease-out delay-500 ${
                 isLoaded ? "translate-y-0" : "translate-y-[100px]"
               }`}
             >

@@ -388,7 +388,7 @@ function Home() {
         >
           <div
             style={{ backgroundColor: "rgba(44, 44, 44, 0.4)" }}
-            className="font-bold text-xl p-2 rounded-[9px] border border-white backdrop-blur-sm shadow-sm quantico-bold text-center"
+            className="font-bold text-xl p-2 rounded-[9px] border border-white text-white backdrop-blur-sm shadow-sm quantico-bold text-center"
           >
             Step onto the field <br /> Your choices decide the match
           </div>
@@ -412,7 +412,7 @@ function Home() {
           {/* Mute/Unmute button - top left */}
           <button
             onClick={toggleMute}
-            className="absolute top-6 right-6 z-60 bg-black bg-opacity-50 hover:bg-opacity-70 rounded-full p-3 transition-all duration-200"
+            className="absolute top-6 right-6 z-60 bg-black bg-opacity-50 text-white hover:bg-opacity-70 rounded-full p-3 transition-all duration-200"
           >
             {!isMuted ? (
               // Muted icon
@@ -422,7 +422,7 @@ function Home() {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="size-6"
+                className="size-6 text-white"
               >
                 <path
                   strokeLinecap="round"
@@ -438,7 +438,7 @@ function Home() {
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
                 stroke="currentColor"
-                className="size-6"
+                className="size-6 text-white"
               >
                 <path
                   stroke-linecap="round"
