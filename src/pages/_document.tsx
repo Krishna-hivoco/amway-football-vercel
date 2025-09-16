@@ -29,8 +29,8 @@ export default function Document() {
           property="og:image"
           content={"https://vitamind.thefirstimpression.ai/black-logo.png"}
         />
-        <meta property="og:image:width" content="704" />
-        <meta property="og:image:height" content="240" />
+        <meta property="og:image:width" content="1000" />
+        <meta property="og:image:height" content="495" />
         <meta property="og:image:type" content="image/png" />
         <meta
           property="og:image:alt"
