@@ -401,7 +401,7 @@ function Home() {
         <div className="absolute inset-0 bg-black z-50 flex items-center justify-center">
           <video
             ref={videoRef}
-            src="/video.mp4"
+            src="https://videoforinteractivedemons.s3.ap-south-1.amazonaws.com/amway/football/video.mp4"
             className="w-full h-full object-cover"
             muted={isMuted}
             onEnded={handleVideoEnd}
