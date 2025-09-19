@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <title>Healthy Bones Manager Quiz – Play & Score!</title>
+        <title>Healthy Bones Manager Quiz - Play & Score!</title>
         <meta
           name="description"
           content="Step into the game! Make the right calls, score goals, and learn how Vitamin D3, Boron, and K2 support stronger bones."
